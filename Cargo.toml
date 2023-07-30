@@ -1,0 +1,32 @@
+[package]
+name = "beers"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "beers"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.72"
+async-trait = "0.1.72"
+axum = "0.6.19"
+chrono = { version = "0.4.26", features = ["serde"] }
+config = "0.13.3"
+redis = { version = "0.23.0", features = ["aio", "tokio-comp", "connection-manager"] }
+secrecy = { version = "0.8.0", features = ["serde"] }
+serde = { version = "1.0.173", features = ["derive"] }
+serde_json = "1.0.103"
+sqlx = { version = "0.7.1", features = [ "runtime-tokio", "tls-rustls", "postgres", "macros", "migrate", "chrono", "uuid" ] }
+tokio = { version = "1.29.1", features = ["full"] }
+tower = "0.4.13"
+tower-http = { version = "0.4.3", features = ["tracing", "trace", "request-id", "util"] }
+tracing = "0.1.37"
+tracing-opentelemetry = "0.19.0"
+tracing-subscriber = { version = "0.3.17", features = ["env-filter"] }
+uuid = { version = "1.4.1", features = ["v4", "serde"] }

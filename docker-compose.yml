@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:15.3-bullseye
+    container_name: beers_postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=beers
+      - POSTGRES_USER=beers
+      - POSTGRES_DB=beers
+    
+  pgadmin4:
+    image: dpage/pgadmin4:7.5
+    depends_on:
+      - postgres
+    ports:
+      - 80:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=beers@beers.br
+      - PGADMIN_DEFAULT_PASSWORD=beers
+
+  redis:
+    image: redis:7.0.12
+    container_name: beers_redis
+    ports:
+      - 6379:6379
